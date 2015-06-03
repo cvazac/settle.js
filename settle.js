@@ -1,23 +1,11 @@
-// ==UserScript==
-// @name         settle.js
-// @namespace    http://your.homepage/
-// @version      0.1
-// @description  enter something useful
-// @author       cvazac
-// @match        http://*/*
-// @grant        none
-// ==/UserScript==
-
 (function(w) {
     if (w != w.top) return;
-    console.log("now");
 
 	function now() {
 		return w.performance.now();
 	}
 	function isAboveFold(imgData) {
-		return imgData.top < viewportHeight && 
-            imgData.left < viewportWidth;
+		return imgData.top < viewportHeight && imgData.left < viewportWidth;
 	}
 	function checkAboveFold(img) {
 		if (img.complete === false) {
@@ -98,7 +86,7 @@
 			}
 		}
 		console.log("" + 
-            "settle time: " + max + "\n" +
+			"settle time: " + max + "\n" +
 			"maxResponseEnd:" + maxResponseEnd + "\n" +
 			"delta:" + (max - maxResponseEnd) + "\n" +
 			"loadEventStart - navigationStart:" + (w.performance.timing.loadEventStart - w.performance.timing.navigationStart) + "\n" +
@@ -109,8 +97,8 @@
 	}
 
 	var d = w.document;
-    var viewportHeight = Math.max(d.documentElement.clientHeight, window.innerHeight || 0);
-    var viewportWidth =  Math.max(d.documentElement.clientWidth, window.innerWidth || 0);
+	var viewportHeight = Math.max(d.documentElement.clientHeight, window.innerHeight || 0);
+	var viewportWidth =  Math.max(d.documentElement.clientWidth, window.innerWidth || 0);
 	var guid = 0, ownTime = 0, lastImgCount, iter = 0;
 	var aboveFold = {};
 	checkResources();
